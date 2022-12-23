@@ -1,5 +1,6 @@
 package com.rapidtech.SpiringJson.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rapidtech.SpiringJson.Model.AddressModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,10 +15,10 @@ import javax.persistence.*;
 @Table(name = "address_tab")
 public class AddressEntity {
     @Id
-    @TableGenerator(name = "id_generator",table = "sequence_table",
+    @TableGenerator(name = "address_id_generator",table = "sequence_table",
             pkColumnName = "gen_name",valueColumnName = "gen_value",
             pkColumnValue = "address_id",initialValue = 0,allocationSize = 0)
-    @GeneratedValue(strategy = GenerationType.TABLE,generator = "id_generator")
+    @GeneratedValue(strategy = GenerationType.TABLE,generator = "address_id_generator")
     private Long id;
     @Column(name = "name_jenis",length = 32,nullable = false)
     private String name;
@@ -32,11 +33,11 @@ public class AddressEntity {
     private String city;
     @Column(name = "province",length = 50,nullable = false)
     private String province;
-    @Column(name = "customer_id",nullable = false)
+    @Column(name = "customer_id",insertable = false,updatable = false)
     private Long customerId;
-
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "customer_id",insertable = false,updatable = false)
+    @JoinColumn(name = "customer_id",nullable = false)
     private CustomerEntity customer;
 
 

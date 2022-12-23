@@ -1,14 +1,11 @@
 package com.rapidtech.SpiringJson.Model;
 
 import com.rapidtech.SpiringJson.Entity.CustomerEntity;
-import com.rapidtech.SpiringJson.Entity.RequestCustomerEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
-import java.security.PrivateKey;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -17,9 +14,10 @@ import java.util.List;
 public class RequestCustomerModel {
 
     private List<CustomerModel> customerDetail;
+//        private Object customerDetail;
 
 
-    public RequestCustomerModel(CustomerEntity customerEntity) {
-        BeanUtils.copyProperties(customerEntity,this);
-    }
+//    public RequestCustomerModel(CustomerEntity customerEntity) {
+//        BeanUtils.copyProperties(customerEntity,this);
+//    }
 }

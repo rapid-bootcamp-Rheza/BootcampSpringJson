@@ -1,8 +1,10 @@
 package com.rapidtech.SpiringJson.Model;
 
+import com.rapidtech.SpiringJson.Entity.AddressEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
 @Data
 @AllArgsConstructor
@@ -19,5 +21,8 @@ public class AddressModel {
     private String province;
 
 //    private Long customerId;
+    public AddressModel(AddressEntity addressEntity){
+        BeanUtils.copyProperties(addressEntity,this);
+    }
 
 }
